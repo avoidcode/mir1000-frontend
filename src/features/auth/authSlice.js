@@ -13,8 +13,8 @@ const getTokenParam = (param) => {
 }
 
 const initialState = {
-    userId: getTokenParam("user_id"),
-    userRole: getTokenParam("role_id"),
+    userId: String(getTokenParam("user_id")),
+    userRole: String(getTokenParam("role_id")),
     isLoggedIn: localStorage.getItem("token") ? true : false,
     darkMode: localStorage.getItem("dark_mode") === "enabled",
     token: localStorage.getItem("token")

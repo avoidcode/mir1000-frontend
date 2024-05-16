@@ -9,7 +9,7 @@ import { apiBaseUrl } from "../features/constants";
 const UserList = () => {
     const navigate = useNavigate();
     const [users, setUsers] = useState([]);
-    const { isLoggedIn, userId, userRole } = useSelector((state) => state.auth);
+    const { isLoggedIn } = useSelector((state) => state.auth);
     const getUsersData = async () => {
         try {
             const response = await axios(`${apiBaseUrl}/users`);

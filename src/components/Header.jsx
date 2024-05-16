@@ -184,7 +184,7 @@ const Header = () => {
                             </NavLink>
                         </>
                     )}
-                    {isLoggedIn && (["0", "1"].includes(userRole)) && (
+                    {isLoggedIn && (["4", "3"].includes(userRole)) && (
                         <>
                             <NavLink className="text-accent-content" to="/users">
                                 Пользователи

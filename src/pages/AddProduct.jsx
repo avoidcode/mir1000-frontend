@@ -58,7 +58,7 @@ const AddProduct = () => {
             });
             const data = response.data.data;
             setManufacturersList(data);
-            setManufacturer(data[0]);
+            setManufacturer(data[0].manufacturer_id);
         } catch (error) {
             toast.error("Ошибка: ", error.response);
         }
@@ -71,7 +71,7 @@ const AddProduct = () => {
             });
             const data = response.data.data;
             setCategoriesList(data);
-            setCategory(data[0]);
+            setCategory(data[0].category_id);
         } catch (error) {
             toast.error("Ошибка: ", error.response);
         }

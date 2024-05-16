@@ -45,7 +45,7 @@ export const shopLoader = async ({ request }) => {
         const response = await axios(`${apiBaseUrl}/filter${parameter}`, {
             headers: authHeaders
         });
-        let data = response.data;
+        let data = response.data.data;
 
         if (
             filterObj.order &&
@@ -97,7 +97,7 @@ const Shop = () => {
                             productLoaderData.productsData.map((product) => (
                                 <ProductElement
                                     key={nanoid()}
-                                    id={product.id}
+                                    id={product.product_id}
                                     title={product.name}
                                     description={product.description}
                                     quantityInStock={product.quantity_in_stock}

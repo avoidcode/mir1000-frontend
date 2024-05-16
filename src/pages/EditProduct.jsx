@@ -88,11 +88,8 @@ const EditProduct = () => {
             recommended_selling_price: Number(recommendedSellingPrice),
             size: Number(size),
             quantity_in_stock: Number(quantityInStock),
-            image: 17
+            image_id: 17
         };
-
-        if (!image)
-            delete patchObj.image;
 
         fetch(`${apiBaseUrl}/products/${state.productId}`, {
                 method: "PATCH",

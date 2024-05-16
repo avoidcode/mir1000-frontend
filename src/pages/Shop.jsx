@@ -42,7 +42,7 @@ export const shopLoader = async ({ request }) => {
 
     try {
         const response = await axios(
-            `${apiBaseUrl}/products${parameter}`,
+            `${apiBaseUrl}/filter${parameter}`,
         );
         let data = response.data;
 

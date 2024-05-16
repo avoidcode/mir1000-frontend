@@ -11,7 +11,7 @@ const ProductElement = ({
     quantityInStock,
     category,
     size,
-    image,
+    image_id,
     price,
     recommendedPrice,
     manufacturerId,
@@ -36,7 +36,7 @@ const ProductElement = ({
                     <img
                         width="150px"
                         className="p-2"
-                        src={`${apiBaseUrl}/images/${image}`}
+                        src={`${apiBaseUrl}/images/${image_id}`}
                         alt="product image"
                     />
                 </Link>

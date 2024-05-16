@@ -103,7 +103,7 @@ const Shop = () => {
                                     quantityInStock={product.quantity_in_stock}
                                     category={product.category_id}
                                     size={product.size}
-                                    image={product.image}
+                                    image_id={product.image_id}
                                     price={product.purchase_price}
                                     recommendedPrice={product.recommended_selling_price}
                                     manufacturerId={product.manufacturer_id}

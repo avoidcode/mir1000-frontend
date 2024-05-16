@@ -18,7 +18,7 @@ const Filters = () => {
 
     const getManufacturerData = async () => {
         try {
-            const response = await axios(`${apiBaseUrl}/manufacturers`);
+            const response = await axios(`${apiBaseUrl}/v1/manufacturers`);
             const data = response.data;
             setManufacturersList([...data, "Все"]);
         } catch (error) {
@@ -28,7 +28,7 @@ const Filters = () => {
 
     const getCategoriesData = async () => {
         try {
-            const response = await axios(`${apiBaseUrl}/categories`);
+            const response = await axios(`${apiBaseUrl}/v1/categories`);
             const data = response.data;
             setCategoriesList([...data, "Все"]);
         } catch (error) {

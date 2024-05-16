@@ -36,7 +36,7 @@ const ProductElement = ({
                     <img
                         width="150px"
                         className="p-2"
-                        src={`https://${image}`}
+                        src={`${apiBaseUrl}/images/${image}`}
                         alt="product image"
                     />
                 </Link>

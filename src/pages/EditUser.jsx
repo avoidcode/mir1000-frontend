@@ -54,7 +54,7 @@ const EditUser = () => {
         };
 
         if (validateUserForm({...patchObj, confirmPassword})) {
-            fetch(`${apiBaseUrl}/user/${state.userId}`, {
+            fetch(`${apiBaseUrl}/users/${state.userId}`, {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(patchObj),

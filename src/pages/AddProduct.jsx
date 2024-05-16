@@ -94,7 +94,7 @@ const AddProduct = () => {
             }
           })
             .then((response) => {
-                setImage(response.data.image_id);
+                setImage(response.data.id);
                 toast("Изображение загружено");
             }).catch((error) => {
                 toast("Ошибка при загрузке изображения");

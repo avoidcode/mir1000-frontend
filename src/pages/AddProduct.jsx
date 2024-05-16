@@ -59,7 +59,7 @@ const AddProduct = () => {
             const response = await axios(`${apiBaseUrl}/manufacturers`, {
                 headers: authHeaders
             });
-            const data = response.data;
+            const data = response.data.data;
             setManufacturersList(data);
         } catch (error) {
             toast.error("Ошибка: ", error.response);
@@ -71,7 +71,7 @@ const AddProduct = () => {
             const response = await axios(`${apiBaseUrl}/categories`, {
                 headers: authHeaders
             });
-            const data = response.data;
+            const data = response.data.data;
             setCategoriesList(data);
         } catch (error) {
             toast.error("Ошибка: ", error.response);

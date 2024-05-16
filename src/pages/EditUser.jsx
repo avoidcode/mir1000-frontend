@@ -124,10 +124,11 @@ const EditUser = () => {
                                 value={role}
                                 onChange={(e) => setRole(e.target.value)}
                             >
-                                <option value="0">Администратор</option>
-                                <option value="1">Менеджер</option>
-                                <option value="2">Работник склада</option>
-                                <option value="3">Поставщик</option>
+                                <option value="1">Продавец</option>
+                                <option value="2">Сотрудник склада</option>
+                                <option value="3">Администратор</option>
+                                <option value="4">Менеджер</option>
+                                <option value="5">Поставщик</option>
                             </select>
                             <label className="font-semibold text-sm pb-1 block text-accent-content">
                                 Пароль

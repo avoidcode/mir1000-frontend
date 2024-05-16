@@ -25,7 +25,9 @@ const EditProduct = () => {
 
     const getProductData = async () => {
         try {
-            const response = await axios(`${apiBaseUrl}/products/${state.productId}`);
+            const response = await axios(`${apiBaseUrl}/products/${state.productId}`, {
+                headers: authHeaders
+            });
             const data = response.data;
             setName(data.name);
             setCategory(data.category_id);

@@ -1,0 +1,80 @@
+{
+  "products": [
+    {
+      "id": 205082351,
+      "name": "Walk London Milano lace up boots in black leather",
+      "purchase_price": "115000",
+      "recommended_selling_price": "11500",
+      "description": "WALK LONDONs",
+      "quantity_in_stock": "122",
+      "category_id": 1,
+      "manufacturer_id": 1,
+      "size": 1,
+      "image": "images.asos-media.com/products/walk-london-milano-lace-up-boots-in-black-leather/205082351-1-black"
+    },
+    {
+      "id": 205082351,
+      "name": "Walk London Milano lace up boots in black leather",
+      "purchase_price": 115,
+      "recommended_selling_price": 115,
+      "description": "WALK LONDON",
+      "quantity_in_stock": 12,
+      "category_id": 1,
+      "manufacturer_id": 1,
+      "size": 1,
+      "image": "images.asos-media.com/products/walk-london-milano-lace-up-boots-in-black-leather/205082351-1-black"
+    },
+    {
+      "id": "zczUXVWHbyVaCHdm_ZxNQ",
+      "name": "Тестовый товар",
+      "category_id": "",
+      "description": "Очень крутой товар флварпфшкуралсфтцуафсцуа",
+      "manufacturer_id": "",
+      "purchase_price": "134013048",
+      "recommended_selling_price": "1341351353115",
+      "size": "42",
+      "quantity_in_stock": "12"
+    }
+  ],
+  "user": [
+    {
+      "id": "i00ZpxM1cBFTggcdTVNq7",
+      "role_id": "0",
+      "surname": "test surname",
+      "name": "test namesasdasdsa",
+      "patronymic": "test patronymic",
+      "email": "test@test.test",
+      "password": "test@test.test"
+    },
+    {
+      "id": "zBc5kMPL9DDRgww2CNVNa",
+      "name": "wertyertye",
+      "surname": "TEST",
+      "patronymic": "vcbcvncbvn",
+      "email": "weyytwey3424@test.test",
+      "password": "weyytwey3424@test.test",
+      "role_id": "1"
+    },
+    {
+      "id": "jwCg0UVcsLakQwl4EJ1hD",
+      "name": "asdfasdf",
+      "surname": "sdfasdf",
+      "patronymic": "asdfasd",
+      "email": "fasdfasdf@tset.setse",
+      "password": "fasdfasdf@tset.setse",
+      "role_id": "0"
+    }
+  ],
+  "categories": [
+    {
+      "id": "0",
+      "name": "cat1"
+    }
+  ],
+  "manufacturers": [
+    {
+      "id": "0",
+      "name": "man1"
+    }
+  ]
+}

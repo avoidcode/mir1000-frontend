@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { store } from "../store";
 import { loginUser, logoutUser } from "../features/auth/authSlice";
 import { apiBaseUrl } from "../features/constants";
+import axios from "axios";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -35,27 +36,21 @@ const Login = () => {
     const proceedLogin = (e) => {
         e.preventDefault();
         if (isValidate()) {
-            fetch(`${apiBaseUrl}/api/users`)
-                .then((res) => res.json())
-                .then((res) => {
-                    let data = res;
-                    const foundUser = data.filter(
-                        (item) => item.email === email && item.password === password,
-                    );
-                    if (foundUser[0]) {
-                        toast.success("Авторизация успешна");
-                        store.dispatch(loginUser({
-                            id: foundUser[0].id,
-                            role: foundUser[0].role_id,
-                        }));
-                        navigate("/");
-                    } else {
-                        toast.warn("Электронная почта или пароль неверны");
-                    }
-                })
-                .catch((err) => {
-                    toast.error("Неизвестная ошибка: " + err.message);
-                });
+            axios.post(`${apiBaseUrl}/auth/login`, {
+                email,
+                password
+            })
+            .then(function (response) {
+                toast.success("Авторизация успешна");
+                let token = response.data.token;
+                store.dispatch(loginUser({
+                    token: token
+                }));
+                navigate("/");
+            })
+            .catch(function (error) {
+                toast.warn("Электронная почта или пароль неверны");
+            });
         }
     };
 

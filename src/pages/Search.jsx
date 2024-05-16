@@ -98,7 +98,7 @@ const Search = () => {
                             <th>Размер</th>
                             <th>Цена</th>
                             <th>Рекомендуемая цена продажи</th>
-                            { isLoggedIn && ["4", "3"].includes(userRole) && (
+                            { isLoggedIn && [4, 3].includes(userRole) && (
                                 <th>Действия</th>
                             )}
                         </tr>

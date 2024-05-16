@@ -34,13 +34,15 @@ const validateUserForm = (form) => {
 
 const mapRoles = (roleId) => {
     switch (roleId) {
-        case "0":
+        case 1:
+            return "Продавец";
+        case 2:
+            return "Сотрудник склада";
+        case 3:
             return "Администратор";
-        case "1":
+        case 4:
             return "Менеджер";
-        case "2":
-            return "Работник склада";
-        case "3":
+        case 5:
             return "Поставщик";
     }
 }

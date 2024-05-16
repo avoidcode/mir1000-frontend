@@ -84,7 +84,7 @@ const ProductElement = ({
             </td>
             <td>
                 <div className="flex items-center justify-center h-16">
-                    {isLoggedIn && ["4", "3"].includes(userRole) && (
+                    {isLoggedIn && [4, 3].includes(userRole) && (
                         <>
                             <button
                                 className={`btn btn-xs text-sm btn-success mr-2`}

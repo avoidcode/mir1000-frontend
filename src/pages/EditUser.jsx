@@ -54,7 +54,7 @@ const EditUser = () => {
             role_id: role
         };
 
-        if (validateUserForm({...patchObj, confirmPassword})) {
+        if (validateUserForm({...patchObj, confirmPassword}, false)) {
             fetch(`${apiBaseUrl}/users/${state.userId}`, {
                 method: "PATCH",
                 headers: {...authHeaders, "Content-Type": "application/json"},

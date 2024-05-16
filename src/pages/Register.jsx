@@ -29,7 +29,7 @@ const Register = () => {
             role_id: role
         };
 
-        if (validateUserForm({...regObj, confirmPassword})) {
+        if (validateUserForm({...regObj, confirmPassword}, true)) {
             fetch(`${apiBaseUrl}/users`, {
                 method: "POST",
                 headers: {...authHeaders, "Content-Type": "application/json"},

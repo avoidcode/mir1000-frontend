@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import { store } from "../store";
 
-const validateUserForm = (form) => {
+const validateUserForm = (form, passReqired) => {
     let isProceed = true;
     let errorMessage = "";
 
@@ -17,12 +17,15 @@ const validateUserForm = (form) => {
     } else if (form.password.length < 6) {
         isProceed = false;
         errorMessage = "Введите пароль длиной более 5 символов";
-    } else if (form.confirmPassword.length < 6) {
-        isProceed = false;
-        errorMessage = "Повторите пароль";
-    } else if (form.password !== form.confirmPassword) {
-        isProceed = false;
-        errorMessage = "Пароли должны совпадать";
+    } 
+    if (passReqired) {
+        if (form.confirmPassword.length < 6) {
+            isProceed = false;
+            errorMessage = "Повторите пароль";
+        } else if (form.password !== form.confirmPassword) {
+            isProceed = false;
+            errorMessage = "Пароли должны совпадать";
+        }
     }
 
     if (!isProceed) {

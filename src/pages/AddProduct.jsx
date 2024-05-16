@@ -56,7 +56,7 @@ const AddProduct = () => {
     
     const getManufacturerData = async () => {
         try {
-            const response = await axios(`${apiBaseUrl}/manufacturers`, {
+            const response = await axios(`${apiBaseUrl}/v1/manufacturers`, {
                 headers: authHeaders
             });
             const data = response.data.data;
@@ -68,7 +68,7 @@ const AddProduct = () => {
 
     const getCategoriesData = async () => {
         try {
-            const response = await axios(`${apiBaseUrl}/categories`, {
+            const response = await axios(`${apiBaseUrl}/v1/categories`, {
                 headers: authHeaders
             });
             const data = response.data.data;

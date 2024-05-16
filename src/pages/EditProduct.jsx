@@ -84,8 +84,8 @@ const EditProduct = () => {
             category_id: Number(category),
             description,
             manufacturer_id: Number(manufacturer),
-            purchase_price: purchasePrice,
-            recommended_selling_price: recommendedSellingPrice,
+            purchase_price: String(purchasePrice),
+            recommended_selling_price: String(recommendedSellingPrice),
             size: Number(size),
             quantity_in_stock: Number(quantityInStock),
             image: image

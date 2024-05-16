@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { SectionTitle } from "../components";
-import { nanoid } from "nanoid";
 import { toast } from "react-toastify";
-import { validateUserForm } from "../features/utils";
+import { authHeaders, validateUserForm } from "../features/utils";
 import axios from "axios";
 import { apiBaseUrl } from "../features/constants";
-import { store } from "../store";
 
 const EditUser = () => {
     const navigate = useNavigate();
@@ -22,8 +20,9 @@ const EditUser = () => {
 
     const getUsersData = async () => {
         try {
-            const response = await axios(`${apiBaseUrl}/users/${state.userId}`,
-            {headers:{"Authorization":`Bearer ${store.getState().auth.token}`}});
+            const response = await axios(`${apiBaseUrl}/users/${state.userId}`, {
+                headers: authHeaders
+            });
             const data = response.data;
             setName(data.name);
             setSurname(data.surname);

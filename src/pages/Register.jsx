@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SectionTitle } from "../components";
-import { nanoid } from "nanoid";
 import { toast } from "react-toastify";
 import { validateUserForm } from "../features/utils";
 import { apiBaseUrl } from "../features/constants";
-import { store } from "../store";
+import { authHeaders } from "../features/utils";
 
 const Register = () => {
     const [name, setName] = useState("");
@@ -22,7 +21,6 @@ const Register = () => {
         e.preventDefault();
 
         let regObj = {
-            id: nanoid(),
             name,
             surname,
             patronymic,
@@ -34,7 +32,7 @@ const Register = () => {
         if (validateUserForm({...regObj, confirmPassword})) {
             fetch(`${apiBaseUrl}/users`, {
                 method: "POST",
-                headers: { "content-type": "application/json", "Authorization":`Bearer ${store.getState().auth.token}` },
+                headers: {...authHeaders, "Content-Type": "application/json"},
                 body: JSON.stringify(regObj),
             })
                 .then((res) => {

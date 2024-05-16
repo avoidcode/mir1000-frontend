@@ -1,4 +1,5 @@
 import { toast } from "react-toastify";
+import { store } from "../store";
 
 const validateUserForm = (form) => {
     let isProceed = true;
@@ -44,4 +45,9 @@ const mapRoles = (roleId) => {
     }
 }
 
-export { validateUserForm, mapRoles };
+const authHeaders = {
+    "Authorization":`Bearer ${store.getState().auth.token}`,
+    "Cache-Control": "no-cache"
+}
+
+export { validateUserForm, mapRoles, authHeaders };

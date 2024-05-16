@@ -5,14 +5,17 @@ import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { apiBaseUrl } from "../features/constants";
+import { authHeaders } from "../features/utils";
 
 const UserList = () => {
     const navigate = useNavigate();
     const [users, setUsers] = useState([]);
-    const { isLoggedIn, token } = useSelector((state) => state.auth);
+    const { isLoggedIn } = useSelector((state) => state.auth);
     const getUsersData = async () => {
         try {
-            const response = await axios(`${apiBaseUrl}/users`, {headers:{"Authorization":`Bearer ${token}`}});
+            const response = await axios(`${apiBaseUrl}/users`, {
+                headers: authHeaders
+            });
             setUsers(response.data);
         } catch (error) {
             toast.error("Error: ", error.response);

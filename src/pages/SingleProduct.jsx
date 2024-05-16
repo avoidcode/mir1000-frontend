@@ -3,12 +3,14 @@ import axios from "axios";
 import { useLoaderData } from "react-router-dom";
 import parse from "html-react-parser";
 import { apiBaseUrl } from "../features/constants";
-import { store } from "../store";
+import { authHeaders } from "../features/utils";
 
 export const singleProductLoader = async ({ params }) => {
     const { id } = params;
 
-    const response = await axios(`${apiBaseUrl}/products/${id}`, {headers:{"Authorization":`Bearer ${store.getState().auth.token}`}});
+    const response = await axios(`${apiBaseUrl}/products/${id}`, {
+        headers: authHeaders
+    });
 
     return { productData: response.data };
 };

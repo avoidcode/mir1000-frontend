@@ -2,10 +2,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SectionTitle } from "../components";
 import { toast } from "react-toastify";
-import { nanoid } from "nanoid";
 import axios from "axios";
 import { apiBaseUrl } from "../features/constants";
-import { store } from "../store";
+import { authHeaders } from "../features/utils";
 
 const AddProduct = () => {
     const navigate = useNavigate();
@@ -27,7 +26,6 @@ const AddProduct = () => {
         e.preventDefault();
 
         let postObj = {
-            id: nanoid(),
             name,
             category_id: category,
             description,
@@ -44,7 +42,7 @@ const AddProduct = () => {
 
         fetch(`${apiBaseUrl}/products`, {
                 method: "POST",
-                headers: {"Content-Type": "application/json", "Authorization":`Bearer ${store.getState().auth.token}`},
+                headers: {...authHeaders, "Content-Type": "application/json"},
                 body: JSON.stringify(postObj),
             })
                 .then((res) => {
@@ -58,7 +56,9 @@ const AddProduct = () => {
     
     const getManufacturerData = async () => {
         try {
-            const response = await axios(`${apiBaseUrl}/manufacturers`);
+            const response = await axios(`${apiBaseUrl}/manufacturers`, {
+                headers: authHeaders
+            });
             const data = response.data;
             setManufacturersList(data);
         } catch (error) {
@@ -68,7 +68,9 @@ const AddProduct = () => {
 
     const getCategoriesData = async () => {
         try {
-            const response = await axios(`${apiBaseUrl}/categories`);
+            const response = await axios(`${apiBaseUrl}/categories`, {
+                headers: authHeaders
+            });
             const data = response.data;
             setCategoriesList(data);
         } catch (error) {

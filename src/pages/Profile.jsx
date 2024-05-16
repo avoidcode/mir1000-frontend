@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { apiBaseUrl } from "../features/constants";
+import { authHeaders } from "../features/utils";
 
 const Profile = () => {
     const { isLoggedIn, userId, token } = useSelector((state) => state.auth);
@@ -19,7 +20,9 @@ const Profile = () => {
 
     const getUserData = async () => {
         try {
-            const response = await axios(`${apiBaseUrl}/users/${userId}`);
+            const response = await axios(`${apiBaseUrl}/users/${userId}`, {
+                headers: authHeaders
+            });
             const data = response.data;
             setUserFormData({
                 id: data.id,

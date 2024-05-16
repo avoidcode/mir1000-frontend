@@ -29,9 +29,7 @@ const router = createBrowserRouter([
             {
                 path: "shop",
                 element: <Shop />,
-                loader: async ({ params }) => {
-                    return shopLoader(params)
-                },
+                loader: shopLoader,
             },
             {
                 path: "shop/product/:id",

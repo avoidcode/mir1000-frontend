@@ -15,7 +15,7 @@ const UserEntry = ({ userData, counter }) => {
             headers: authHeaders
         });
         toast.success("Пользователь удалён.");
-        navigate("/users");
+        navigate(0);
     };
     return (
         <tr className="hover">

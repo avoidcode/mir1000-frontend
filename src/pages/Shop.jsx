@@ -11,6 +11,8 @@ import { nanoid } from "nanoid";
 import { useSelector } from "react-redux";
 import { apiBaseUrl } from "../features/constants";
 import { authHeaders } from "../features/utils";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 export const shopLoader = async ({ request }) => {
     const params = Object.fromEntries([
@@ -65,8 +67,40 @@ export const shopLoader = async ({ request }) => {
 };
 
 const Shop = () => {
+    const [categories, setCategories] = useState([]);
+    const [manufacturers, setManufacturers] = useState([]);
     const { isLoggedIn, userRole } = useSelector((state) => state.auth);
     const productLoaderData = useLoaderData();
+
+    const getManufacturerData = async () => {
+        try {
+            const response = await axios(`${apiBaseUrl}/v1/manufacturers`, {
+                headers: authHeaders
+            });
+            const data = response.data.data;
+            setManufacturers(data);
+        } catch (error) {
+            toast.error("Ошибка: ", error.response);
+        }
+    };
+
+    const getCategoriesData = async () => {
+        try {
+            const response = await axios(`${apiBaseUrl}/v1/categories`, {
+                headers: authHeaders
+            });
+            const data = response.data.data;
+            setCategories(data);
+        } catch (error) {
+            toast.error("Ошибка: ", error.response);
+        }
+    };
+
+    useEffect(() => {
+        getManufacturerData();
+        getCategoriesData();
+    }, []);
+
     return (
         <>
             <SectionTitle title="Каталог" />
@@ -107,6 +141,8 @@ const Shop = () => {
                                     price={product.purchase_price}
                                     recommendedPrice={product.recommended_selling_price}
                                     manufacturerId={product.manufacturer_id}
+                                    manufacturers={manufacturers}
+                                    categories={categories}
                                 />
                             ))}
                         </tbody>

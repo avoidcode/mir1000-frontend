@@ -15,6 +15,8 @@ const ProductElement = ({
     price,
     recommendedPrice,
     manufacturerId,
+    manufacturers,
+    categories
 }) => {
     const { userRole, isLoggedIn, token } = useSelector((state) => state.auth);
 
@@ -50,8 +52,8 @@ const ProductElement = ({
                         {title}
                     </span>
                 </Link>
-                <p>{category}</p>
-                <p>{manufacturerId}</p>
+                <p>{categories.find(i => i.category_id == category).name}</p>
+                <p>{manufacturers.find(i => i.manufacturer_id == manufacturerId).name}</p>
             </td>
             <td>
                 <span className="font-semibold text-xl tracking-tight mb-5 text-accent-content">

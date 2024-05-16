@@ -27,7 +27,7 @@ const UserEntry = ({ userData, counter }) => {
             <td>
                 <button
                     className={`btn btn-xs text-sm btn-success mr-5`}
-                    onClick={() => navigate("/edit-user", {state: { userId: userData.id }})}
+                    onClick={() => navigate("/edit-user", {state: { userId: userData.user_id }})}
                 >
                     Изменить
                 </button>

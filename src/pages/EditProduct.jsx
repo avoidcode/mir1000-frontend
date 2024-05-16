@@ -21,7 +21,7 @@ const EditProduct = () => {
     const [recommendedSellingPrice, setRecommendedSellingPrice] = useState("");
     const [size, setSize] = useState("");
     const [quantityInStock, setQuantityInStock] = useState("");
-    const [image, setImage] = useState("");
+    const [image, setImage] = useState(17);
 
     const getProductData = async () => {
         try {
@@ -90,7 +90,7 @@ const EditProduct = () => {
             recommended_selling_price: Number(recommendedSellingPrice),
             size: Number(size),
             quantity_in_stock: Number(quantityInStock),
-            image_id: 17
+            image_id: image
         };
 
         fetch(`${apiBaseUrl}/products/${state.productId}`, {
@@ -106,6 +106,26 @@ const EditProduct = () => {
                     toast.error("Ошибка: " + err.message);
                 });
     };
+
+    const uploadImage = async (file) => {
+        let data = new FormData();
+        data.append('file', file, file.name);
+        axios.post(`${apiBaseUrl}/images`, data, {
+            headers: {
+                ...authHeaders, 
+                'accept': 'application/json',
+                'Accept-Language': 'en-US,en;q=0.8',
+                'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
+            }
+          })
+            .then((response) => {
+                setImage(response.data.id);
+                toast("Изображение загружено");
+            }).catch((error) => {
+                toast("Ошибка при загрузке изображения");
+            });
+    }
+
     return (
         <>
             <SectionTitle title="Изменение товара" />
@@ -205,7 +225,7 @@ const EditProduct = () => {
                                 type="file"
                                 className="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
                                 onChange={(e) =>
-                                    setImage(e.target.filepath)
+                                    uploadImage(e.target.files[0])
                                 }
                             />
                             <button

@@ -34,7 +34,7 @@ const AddProduct = () => {
             recommended_selling_price: Number(recommendedSellingPrice),
             size: Number(size),
             quantity_in_stock: Number(quantityInStock),
-            image: image
+            image: 17
         };
 
         if (!image)

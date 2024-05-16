@@ -49,6 +49,7 @@ const EditProduct = () => {
             });
             const data = response.data.data;
             setManufacturersList(data);
+            setManufacturer(data[0]);
         } catch (error) {
             toast.error("Ошибка: ", error.response);
         }
@@ -61,6 +62,7 @@ const EditProduct = () => {
             });
             const data = response.data.data;
             setCategoriesList(data);
+            setCategory(data[0]);
         } catch (error) {
             toast.error("Ошибка: ", error.response);
         }

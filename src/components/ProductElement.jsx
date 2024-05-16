@@ -28,6 +28,11 @@ const ProductElement = ({
         navigate("/shop");
     };
 
+    console.log(categories);
+    console.log(categories.find(i => i.category_id == category));
+    console.log(manufacturers);
+    console.log(manufacturers.find(i => i.manufacturer_id == manufacturerId));
+
     return (
         <tr className="hover">
             <td>

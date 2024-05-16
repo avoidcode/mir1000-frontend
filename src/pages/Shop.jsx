@@ -42,7 +42,7 @@ export const shopLoader = async ({ request }) => {
             : ``)
 
     try {
-        const response = await axios(`${apiBaseUrl}/filter${parameter}`, {
+        const response = await axios(`${apiBaseUrl}/products${parameter}`, {
             headers: authHeaders
         });
         let data = response.data.data;

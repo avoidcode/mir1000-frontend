@@ -107,7 +107,7 @@ const Search = () => {
                         {products && Array.isArray(products) && products.map((product) => (
                             <ProductElement
                                 key={nanoid()}
-                                id={product.id}
+                                id={product.product_id}
                                 title={product.name}
                                 description={product.description}
                                 quantityInStock={product.quantity_in_stock}

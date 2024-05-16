@@ -5,6 +5,7 @@ import { nanoid } from "nanoid";
 import { toast } from "react-toastify";
 import { validateUserForm } from "../features/utils";
 import { apiBaseUrl } from "../features/constants";
+import { store } from "../store";
 
 const Register = () => {
     const [name, setName] = useState("");
@@ -33,7 +34,7 @@ const Register = () => {
         if (validateUserForm({...regObj, confirmPassword})) {
             fetch(`${apiBaseUrl}/users`, {
                 method: "POST",
-                headers: { "content-type": "application/json" },
+                headers: { "content-type": "application/json", "Authorization":`Bearer ${store.getState().auth.token}` },
                 body: JSON.stringify(regObj),
             })
                 .then((res) => {

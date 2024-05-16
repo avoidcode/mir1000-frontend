@@ -4,6 +4,7 @@ import { SectionTitle } from "../components";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { apiBaseUrl } from "../features/constants";
+import { store } from "../store";
 
 const EditProduct = () => {
     const navigate = useNavigate();
@@ -89,7 +90,7 @@ const EditProduct = () => {
 
         fetch(`${apiBaseUrl}/products/${state.productId}`, {
                 method: "PATCH",
-                headers: {"Content-Type": "application/json"},
+                headers: {"Content-Type": "application/json", "Authorization":`Bearer ${store.getState().auth.token}`},
                 body: JSON.stringify(patchObj),
             })
                 .then((res) => {

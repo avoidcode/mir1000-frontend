@@ -9,10 +9,10 @@ import { apiBaseUrl } from "../features/constants";
 const UserList = () => {
     const navigate = useNavigate();
     const [users, setUsers] = useState([]);
-    const { isLoggedIn } = useSelector((state) => state.auth);
+    const { isLoggedIn, token } = useSelector((state) => state.auth);
     const getUsersData = async () => {
         try {
-            const response = await axios(`${apiBaseUrl}/users`);
+            const response = await axios(`${apiBaseUrl}/users`, {headers:{"Authorization":`Bearer ${token}`}});
             setUsers(response.data);
         } catch (error) {
             toast.error("Error: ", error.response);

@@ -3,18 +3,17 @@ import axios from "axios";
 import { useLoaderData } from "react-router-dom";
 import parse from "html-react-parser";
 import { apiBaseUrl } from "../features/constants";
-//import { useSelector } from "react-redux";
+import { store } from "../store";
 
 export const singleProductLoader = async ({ params }) => {
     const { id } = params;
 
-    const response = await axios(`${apiBaseUrl}/products/${id}`);
+    const response = await axios(`${apiBaseUrl}/products/${id}`, {headers:{"Authorization":`Bearer ${store.getState().auth.token}`}});
 
     return { productData: response.data };
 };
 
 const SingleProduct = () => {
-    //const {isLoggedIn, userId} = useSelector((state) => state.auth);
     const { productData } = useLoaderData();
     return (
         <>

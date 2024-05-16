@@ -1,67 +1,45 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FormInput from "./FormInput";
 import { Form, Link } from "react-router-dom";
 import FormRange from "./FormRange";
 import FormSelect from "./FormSelect";
 import FormCheckbox from "./FormCheckbox";
+import axios from "axios";
+import { apiBaseUrl } from "../features/constants";
+import { toast } from "react-toastify";
 
 const Filters = () => {
-    const [selectCategoryList] = useState([
+    const [categoriesList, setCategoriesList] = useState([
         "Все",
-        "shoes",
-        "slippers",
-        "heels",
-        "t-shirts",
-        "jackets",
-        "caps",
-        "shorts",
-        "sweaters",
-        "sneakers",
-        "shirts",
-        "boots",
-        "overshirts",
-        "pants",
-        "jeans",
-        "socks",
-        "belts",
-        "trainers",
     ]);
-    const [selectBrandList] = useState([
+    const [manufacturersList, setManufacturersList] = useState([
         "Все",
-        "WALK LONDON",
-        "Reebok",
-        "Nike",
-        "Jack & Jones",
-        "Crocs",
-        "Vans",
-        "Puma",
-        "New Balance",
-        "Tommy Jeans",
-        "Tommy Hilfiger",
-        "Bershka",
-        "New Look",
-        "AllSaints",
-        "Columbia",
-        "The North Face",
-        "Collusion",
-        "ASOS DESIGN",
-        "Topman",
-        "Dr Denim",
-        "Polo Ralph Lauren",
-        "ASOS Dark Future",
-        "Levi's",
-        "Threadbare",
-        "Calvin Klein",
-        "AAPE BY A BATHING APE®",
-        "Good For Nothing",
-        "Timberland",
-        "Pull and Bear",
-        "Koi Footwear",
-        "adidas performance",
-        "Nike Running",
-        "Dr Martens",
-        "River Island",
     ]);
+
+    const getManufacturerData = async () => {
+        try {
+            const response = await axios(`${apiBaseUrl}/manufacturers`);
+            const data = response.data;
+            setManufacturersList([...data, "Все"]);
+        } catch (error) {
+            toast.error("Ошибка: ", error.response);
+        }
+    };
+
+    const getCategoriesData = async () => {
+        try {
+            const response = await axios(`${apiBaseUrl}/categories`);
+            const data = response.data;
+            setCategoriesList([...data, "Все"]);
+        } catch (error) {
+            toast.error("Ошибка: ", error.response);
+        }
+    };
+
+    useEffect(() => {
+        getManufacturerData();
+        getCategoriesData();
+    }, []);
 
     return (
         <Form className="bg-base-200 rounded-md px-8 py-4 grid gap-x-4 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center pb-8">
@@ -75,14 +53,14 @@ const Filters = () => {
             <FormSelect
                 label="Категория"
                 name="category"
-                list={selectCategoryList.map((item) => {return {name: item, value: item}; })}
+                list={categoriesList.map((item) => {return {name: item, value: item}; })}
                 size="select-sm"
                 defaultValue="all"
             />
             <FormSelect
                 label="Производитель"
                 name="manufacturer"
-                list={selectBrandList.map((item) => {return {name: item, value: item}; })}
+                list={manufacturersList.map((item) => {return {name: item, value: item}; })}
                 size="select-sm"
                 defaultValue="all"
             />

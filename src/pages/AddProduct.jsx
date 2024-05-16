@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { nanoid } from "nanoid";
 import axios from "axios";
 import { apiBaseUrl } from "../features/constants";
+import { store } from "../store";
 
 const AddProduct = () => {
     const navigate = useNavigate();
@@ -43,7 +44,7 @@ const AddProduct = () => {
 
         fetch(`${apiBaseUrl}/products`, {
                 method: "POST",
-                headers: {"Content-Type": "application/json"},
+                headers: {"Content-Type": "application/json", "Authorization":`Bearer ${store.getState().auth.token}`},
                 body: JSON.stringify(postObj),
             })
                 .then((res) => {

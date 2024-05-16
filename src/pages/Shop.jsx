@@ -10,6 +10,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import { nanoid } from "nanoid";
 import { useSelector } from "react-redux";
 import { apiBaseUrl } from "../features/constants";
+import { store } from "../store";
 
 export const shopLoader = async ({ request }) => {
     const params = Object.fromEntries([
@@ -42,7 +43,7 @@ export const shopLoader = async ({ request }) => {
 
     try {
         const response = await axios(
-            `${apiBaseUrl}/filter${parameter}`,
+            `${apiBaseUrl}/filter${parameter}`, {headers:{"Authorization":`Bearer ${store.getState().auth.token}`}}
         );
         let data = response.data;
 
@@ -86,7 +87,7 @@ const Shop = () => {
                             <th>Размер</th>
                             <th>Цена</th>
                             <th>Рекомендуемая цена продажи</th>
-                            { isLoggedIn && ["0", "1"].includes(userRole) && (
+                            { isLoggedIn && ["4", "3"].includes(userRole) && (
                                 <th>Действия</th>
                             )}
                         </tr>

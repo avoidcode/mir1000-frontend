@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { apiBaseUrl } from "../features/constants";
 
 const Profile = () => {
-    const { isLoggedIn, userId } = useSelector((state) => state.auth);
+    const { isLoggedIn, userId, token } = useSelector((state) => state.auth);
     const [userFormData, setUserFormData] = useState({
         surname: false,
         name: false,
@@ -54,7 +54,7 @@ const Profile = () => {
                 patronymic: userFormData.patronymic,
                 email: userFormData.email,
                 password: userFormData.password
-            });
+            }, {headers:{"Authorization":`Bearer ${token}`}});
         } catch (error) {
             console.log(error.response);
         }

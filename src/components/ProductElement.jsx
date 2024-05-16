@@ -16,12 +16,12 @@ const ProductElement = ({
     recommendedPrice,
     manufacturerId,
 }) => {
-    const { userRole, isLoggedIn } = useSelector((state) => state.auth);
+    const { userRole, isLoggedIn, token } = useSelector((state) => state.auth);
 
     const navigate = useNavigate();
 
     const removeProduct = async (productId) => {
-        await axios.delete(`${apiBaseUrl}/products/${productId}`);
+        await axios.delete(`${apiBaseUrl}/products/${productId}`, {headers:{"Authorization":`Bearer ${token}`}});
         toast.success("Товар удалён.");
         navigate("/shop");
     };

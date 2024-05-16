@@ -4,6 +4,7 @@ import { ProductElement, SearchPagination, SectionTitle } from "../components";
 import { nanoid } from "nanoid";
 import { useSelector } from "react-redux";
 import { apiBaseUrl } from "../features/constants";
+import { store } from "../store";
 
 const Search = () => {
     const { isLoggedIn, userRole } = useSelector((state) => state.auth);
@@ -18,6 +19,7 @@ const Search = () => {
         try {
             const response = await axios(
                 `${apiBaseUrl}/filter?q=${e.target.search.value}&_page=${currentPage}`,
+                {headers:{"Authorization":`Bearer ${store.getState().auth.token}`}}
             );
             const data = response.data;
             setProducts(data);

@@ -27,13 +27,13 @@ const AddProduct = () => {
 
         let postObj = {
             name,
-            category_id: category,
+            category_id: Number(category),
             description,
-            manufacturer_id: manufacturer,
-            purchase_price: purchasePrice,
-            recommended_selling_price: recommendedSellingPrice,
-            size,
-            quantity_in_stock: quantityInStock,
+            manufacturer_id: Number(manufacturer),
+            purchase_price: Number(purchasePrice),
+            recommended_selling_price: Number(recommendedSellingPrice),
+            size: Number(size),
+            quantity_in_stock: Number(quantityInStock),
             image: image
         };
 

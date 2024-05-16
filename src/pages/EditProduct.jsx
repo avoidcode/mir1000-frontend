@@ -184,7 +184,7 @@ const EditProduct = () => {
                                 onChange={(e) => setCategory(e.target.value)}
                             >
                                 {categoriesList?.map((item, index) => {
-                                    return (<option key={index} value={item.id}>{item.name}</option>);
+                                    return (<option key={index} value={item.category_id}>{item.name}</option>);
                                 })}
                             </select>
                             <label className="font-semibold text-sm pb-1 block text-accent-content">
@@ -196,7 +196,7 @@ const EditProduct = () => {
                                 onChange={(e) => setManufacturer(e.target.value.id)}
                             >
                                 {manufacturersList?.map((item, index) => {
-                                    return (<option key={index} value={item.id}>{item.name}</option>);
+                                    return (<option key={index} value={item.manufacturer_id}>{item.name}</option>);
                                 })}
                             </select>
                             <label className="font-semibold text-sm pb-1 block text-accent-content">

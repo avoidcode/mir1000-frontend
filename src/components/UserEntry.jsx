@@ -2,9 +2,8 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { mapRoles } from "../features/utils";
+import { authHeaders, mapRoles } from "../features/utils";
 import { apiBaseUrl } from "../features/constants";
-import { store } from "../store";
 
 const UserEntry = ({ userData, counter }) => {
     const { userId } = useSelector((state) => state.auth);
@@ -12,7 +11,9 @@ const UserEntry = ({ userData, counter }) => {
     const removeUser = async (user) => {
         if (userData.id == userId)
             return;
-        await axios.delete(`${apiBaseUrl}/users/${user.id}`, {headers:{"Authorization":`Bearer ${store.getState().auth.token}`}});
+        await axios.delete(`${apiBaseUrl}/users/${user.id}`, {
+            headers: authHeaders
+        });
         toast.success("Пользователь удалён.");
         navigate("/users");
     };

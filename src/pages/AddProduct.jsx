@@ -88,9 +88,10 @@ const AddProduct = () => {
         data.append('file', file, file.name);
         axios.post(`${apiBaseUrl}/images`, data, {
             headers: {
-              'accept': 'application/json',
-              'Accept-Language': 'en-US,en;q=0.8',
-              'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
+                ...authHeaders, 
+                'accept': 'application/json',
+                'Accept-Language': 'en-US,en;q=0.8',
+                'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
             }
           })
             .then((response) => {
@@ -187,7 +188,7 @@ const AddProduct = () => {
                             <select
                                 className="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
                                 value={manufacturer}
-                                onChange={(e) => setManufacturer(e.target.value.id)}
+                                onChange={(e) => setManufacturer(e.target.value.manufacturer_id)}
                             >
                                 {manufacturersList?.map((item, index) => {
                                     return (<option key={index} value={item.manufacturer_id}>{item.name}</option>);

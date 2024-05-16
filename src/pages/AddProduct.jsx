@@ -20,7 +20,7 @@ const AddProduct = () => {
     const [recommendedSellingPrice, setRecommendedSellingPrice] = useState("");
     const [size, setSize] = useState("");
     const [quantityInStock, setQuantityInStock] = useState("");
-    const [image, setImage] = useState("");
+    const [image, setImage] = useState(17);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -34,7 +34,7 @@ const AddProduct = () => {
             recommended_selling_price: Number(recommendedSellingPrice),
             size: Number(size),
             quantity_in_stock: Number(quantityInStock),
-            image_id: 17
+            image_id: image
         };
 
         fetch(`${apiBaseUrl}/products`, {

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { apiBaseUrl } from "../features/constants";
 
 const ProductElement = ({
     id,
@@ -20,7 +21,7 @@ const ProductElement = ({
     const navigate = useNavigate();
 
     const removeProduct = async (productId) => {
-        await axios.delete(`http://localhost:8080/products/${productId}`);
+        await axios.delete(`${apiBaseUrl}/products/${productId}`);
         toast.success("Товар удалён.");
         navigate("/shop");
     };

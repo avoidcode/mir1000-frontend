@@ -4,6 +4,7 @@ import { SectionTitle } from "../components";
 import { toast } from "react-toastify";
 import { nanoid } from "nanoid";
 import axios from "axios";
+import { apiBaseUrl } from "../features/constants";
 
 const AddProduct = () => {
     const navigate = useNavigate();
@@ -40,7 +41,7 @@ const AddProduct = () => {
         if (!image)
             delete postObj.image;
 
-        fetch(`http://localhost:8080/products`, {
+        fetch(`${apiBaseUrl}/products`, {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(postObj),
@@ -56,7 +57,7 @@ const AddProduct = () => {
     
     const getManufacturerData = async () => {
         try {
-            const response = await axios(`http://localhost:8080/manufacturers`);
+            const response = await axios(`${apiBaseUrl}/manufacturers`);
             const data = response.data;
             setManufacturersList(data);
         } catch (error) {
@@ -66,7 +67,7 @@ const AddProduct = () => {
 
     const getCategoriesData = async () => {
         try {
-            const response = await axios(`http://localhost:8080/categories`);
+            const response = await axios(`${apiBaseUrl}/categories`);
             const data = response.data;
             setCategoriesList(data);
         } catch (error) {
@@ -82,7 +83,7 @@ const AddProduct = () => {
     const uploadImage = async (file) => {
         let data = new FormData();
         data.append('file', file, file.name);
-        axios.post("http://localhost:8080/images/upload", data, {
+        axios.post(`${apiBaseUrl}/images/upload`, data, {
             headers: {
               'accept': 'application/json',
               'Accept-Language': 'en-US,en;q=0.8',

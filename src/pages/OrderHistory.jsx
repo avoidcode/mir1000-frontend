@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { nanoid } from "nanoid";
+import { apiBaseUrl } from "../features/constants";
 
 const OrderHistory = () => {
     const loginState = useSelector((state) => state.auth.isLoggedIn);
@@ -13,7 +14,7 @@ const OrderHistory = () => {
 
     const getOrderHistory = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/orders");
+            const response = await axios.get(`${apiBaseUrl}/orders`);
             const data = response.data;
             setOrders(
                 data.filter(

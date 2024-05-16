@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { SectionTitle } from "../components";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { apiBaseUrl } from "../features/constants";
 
 const EditProduct = () => {
     const navigate = useNavigate();
@@ -23,7 +24,7 @@ const EditProduct = () => {
 
     const getProductData = async () => {
         try {
-            const response = await axios(`http://localhost:8080/products/${state.productId}`);
+            const response = await axios(`${apiBaseUrl}/products/${state.productId}`);
             const data = response.data;
             setName(data.name);
             setCategory(data.category_id);
@@ -40,7 +41,7 @@ const EditProduct = () => {
 
     const getManufacturerData = async () => {
         try {
-            const response = await axios(`http://localhost:8080/manufacturers`);
+            const response = await axios(`${apiBaseUrl}/manufacturers`);
             const data = response.data;
             setManufacturersList(data);
         } catch (error) {
@@ -50,7 +51,7 @@ const EditProduct = () => {
 
     const getCategoriesData = async () => {
         try {
-            const response = await axios(`http://localhost:8080/categories`);
+            const response = await axios(`${apiBaseUrl}/categories`);
             const data = response.data;
             setCategoriesList(data);
         } catch (error) {
@@ -86,7 +87,7 @@ const EditProduct = () => {
         if (!image)
             delete patchObj.image;
 
-        fetch(`http://localhost:8080/products/${state.productId}`, {
+        fetch(`${apiBaseUrl}/products/${state.productId}`, {
                 method: "PATCH",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(patchObj),

@@ -2,12 +2,13 @@ import axios from "axios";
 
 import { useLoaderData } from "react-router-dom";
 import parse from "html-react-parser";
+import { apiBaseUrl } from "../features/constants";
 //import { useSelector } from "react-redux";
 
 export const singleProductLoader = async ({ params }) => {
     const { id } = params;
 
-    const response = await axios(`http://localhost:8080/products/${id}`);
+    const response = await axios(`${apiBaseUrl}/products/${id}`);
 
     return { productData: response.data };
 };

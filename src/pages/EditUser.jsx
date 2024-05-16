@@ -5,6 +5,7 @@ import { nanoid } from "nanoid";
 import { toast } from "react-toastify";
 import { validateUserForm } from "../features/utils";
 import axios from "axios";
+import { apiBaseUrl } from "../features/constants";
 
 const EditUser = () => {
     const navigate = useNavigate();
@@ -20,7 +21,7 @@ const EditUser = () => {
 
     const getUsersData = async () => {
         try {
-            const response = await axios(`http://localhost:8080/user/${state.userId}`);
+            const response = await axios(`${apiBaseUrl}/users/${state.userId}`);
             const data = response.data;
             setName(data.name);
             setSurname(data.surname);
@@ -53,7 +54,7 @@ const EditUser = () => {
         };
 
         if (validateUserForm({...patchObj, confirmPassword})) {
-            fetch(`http://localhost:8080/user/${state.userId}`, {
+            fetch(`${apiBaseUrl}/user/${state.userId}`, {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(patchObj),

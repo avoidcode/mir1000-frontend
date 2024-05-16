@@ -9,6 +9,7 @@ import axios from "axios";
 import { Link, useLoaderData } from "react-router-dom";
 import { nanoid } from "nanoid";
 import { useSelector } from "react-redux";
+import { apiBaseUrl } from "../features/constants";
 
 export const shopLoader = async ({ request }) => {
     const params = Object.fromEntries([
@@ -41,7 +42,7 @@ export const shopLoader = async ({ request }) => {
 
     try {
         const response = await axios(
-            `http://localhost:8080/products${parameter}`,
+            `${apiBaseUrl}/products${parameter}`,
         );
         let data = response.data;
 

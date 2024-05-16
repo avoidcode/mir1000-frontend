@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { store } from "../store";
 import { loginUser, logoutUser } from "../features/auth/authSlice";
+import { apiBaseUrl } from "../features/constants";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -34,7 +35,7 @@ const Login = () => {
     const proceedLogin = (e) => {
         e.preventDefault();
         if (isValidate()) {
-            fetch("http://localhost:8080/user")
+            fetch(`${apiBaseUrl}/api/users`)
                 .then((res) => res.json())
                 .then((res) => {
                     let data = res;

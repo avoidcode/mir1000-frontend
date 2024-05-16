@@ -4,6 +4,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { apiBaseUrl } from "../features/constants";
 
 const Profile = () => {
     const { isLoggedIn, userId } = useSelector((state) => state.auth);
@@ -18,7 +19,7 @@ const Profile = () => {
 
     const getUserData = async () => {
         try {
-            const response = await axios(`http://localhost:8080/user/${userId}`);
+            const response = await axios(`${apiBaseUrl}/users/${userId}`);
             const data = response.data;
             setUserFormData({
                 id: data.id,
@@ -47,7 +48,7 @@ const Profile = () => {
         e.preventDefault();
         try {
 
-            await axios.patch(`http://localhost:8080/user/${userId}`, {
+            await axios.patch(`${apiBaseUrl}/users/${userId}`, {
                 surname: userFormData.surname,
                 name: userFormData.name,
                 patronymic: userFormData.patronymic,

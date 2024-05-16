@@ -4,6 +4,7 @@ import { SectionTitle } from "../components";
 import { nanoid } from "nanoid";
 import { toast } from "react-toastify";
 import { validateUserForm } from "../features/utils";
+import { apiBaseUrl } from "../features/constants";
 
 const Register = () => {
     const [name, setName] = useState("");
@@ -30,7 +31,7 @@ const Register = () => {
         };
 
         if (validateUserForm({...regObj, confirmPassword})) {
-            fetch("http://localhost:8080/user", {
+            fetch(`${apiBaseUrl}/users`, {
                 method: "POST",
                 headers: { "content-type": "application/json" },
                 body: JSON.stringify(regObj),

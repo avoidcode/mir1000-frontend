@@ -51,7 +51,7 @@ const EditUser = () => {
             patronymic,
             email,
             password,
-            role_id: role.parseInt()
+            role_id: Number(role)
         };
 
         if (validateUserForm({...patchObj, confirmPassword}, false)) {

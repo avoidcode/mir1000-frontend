@@ -16,7 +16,7 @@ const UserList = () => {
             const response = await axios(`${apiBaseUrl}/users`, {
                 headers: authHeaders
             });
-            setUsers(response.data);
+            setUsers(response.data.data);
         } catch (error) {
             toast.error("Error: ", error.response);
         }

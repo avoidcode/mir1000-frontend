@@ -30,7 +30,7 @@ const Register = () => {
         };
 
         if (validateUserForm({...regObj, confirmPassword}, true)) {
-            fetch(`${apiBaseUrl}/users`, {
+            fetch(`${apiBaseUrl}/auth/signup`, {
                 method: "POST",
                 headers: {...authHeaders, "Content-Type": "application/json"},
                 body: JSON.stringify(regObj),

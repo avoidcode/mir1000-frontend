@@ -7,6 +7,7 @@ import FormCheckbox from "./FormCheckbox";
 import axios from "axios";
 import { apiBaseUrl } from "../features/constants";
 import { toast } from "react-toastify";
+import { authHeaders } from "../features/utils";
 
 const Filters = () => {
     const [categoriesList, setCategoriesList] = useState([
@@ -18,7 +19,9 @@ const Filters = () => {
 
     const getManufacturerData = async () => {
         try {
-            const response = await axios(`${apiBaseUrl}/v1/manufacturers`);
+            const response = await axios(`${apiBaseUrl}/v1/manufacturers`, {
+                headers: authHeaders
+            });
             const data = response.data;
             setManufacturersList([...data, "Все"]);
         } catch (error) {
@@ -28,7 +31,9 @@ const Filters = () => {
 
     const getCategoriesData = async () => {
         try {
-            const response = await axios(`${apiBaseUrl}/v1/categories`);
+            const response = await axios(`${apiBaseUrl}/v1/categories`, {
+                headers: authHeaders
+            });
             const data = response.data;
             setCategoriesList([...data, "Все"]);
         } catch (error) {

@@ -33,7 +33,7 @@ const UserEntry = ({ userData, counter }) => {
                     Изменить
                 </button>
                 <button
-                    className={`btn btn-xs text-sm ${userData.id == userId ? "" : "btn-error"}`}
+                    className={`btn btn-xs text-sm ${userData.user_id == userId ? "" : "btn-error"}`}
                     onClick={() => removeUser(userData)}
                 >
                     Удалить

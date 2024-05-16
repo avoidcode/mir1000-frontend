@@ -9,9 +9,9 @@ const UserEntry = ({ userData, counter }) => {
     const { userId } = useSelector((state) => state.auth);
     const navigate = useNavigate();
     const removeUser = async (user) => {
-        if (userData.id == userId)
+        if (userData.user_id == userId)
             return;
-        await axios.delete(`${apiBaseUrl}/users/${user.id}`, {
+        await axios.delete(`${apiBaseUrl}/users/${user.user_id}`, {
             headers: authHeaders
         });
         toast.success("Пользователь удалён.");

@@ -26,7 +26,7 @@ const Register = () => {
             patronymic,
             email,
             password,
-            role_id: role
+            role_id: Number(role)
         };
 
         if (validateUserForm({...regObj, confirmPassword}, true)) {

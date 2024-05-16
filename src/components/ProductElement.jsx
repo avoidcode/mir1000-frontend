@@ -28,11 +28,6 @@ const ProductElement = ({
         navigate("/shop");
     };
 
-    console.log(categories);
-    console.log(categories.find(i => i.category_id == category));
-    console.log(manufacturers);
-    console.log(manufacturers.find(i => i.manufacturer_id == manufacturerId));
-
     return (
         <tr className="hover">
             <td>
@@ -57,8 +52,8 @@ const ProductElement = ({
                         {title}
                     </span>
                 </Link>
-                <p>{}</p>
-                <p>{}</p>
+                <p>{categories?.find(i => i.category_id == category)?.name}</p>
+                <p>{manufacturers?.find(i => i.manufacturer_id == manufacturerId)?.name}</p>
             </td>
             <td>
                 <span className="font-semibold text-xl tracking-tight mb-5 text-accent-content">

@@ -88,7 +88,7 @@ const EditProduct = () => {
             recommended_selling_price: Number(recommendedSellingPrice),
             size: Number(size),
             quantity_in_stock: Number(quantityInStock),
-            image: image
+            image: 17
         };
 
         if (!image)
@@ -129,7 +129,7 @@ const EditProduct = () => {
                             </label>
                             <textarea
                                 rows="4"
-                                className="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full block p-2.5 w-full text-sm rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                className="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full block p-2.5 text-accent-content"
                                 placeholder="Описание"
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
@@ -193,7 +193,7 @@ const EditProduct = () => {
                             <select
                                 className="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
                                 value={manufacturer}
-                                onChange={(e) => setManufacturer(e.target.value.manufacturer_id)}
+                                onChange={(e) => setManufacturer(e.target.value)}
                             >
                                 {manufacturersList?.map((item, index) => {
                                     return (<option key={index} value={item.manufacturer_id}>{item.name}</option>);

@@ -188,7 +188,7 @@ const AddProduct = () => {
                             <select
                                 className="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
                                 value={manufacturer}
-                                onChange={(e) => setManufacturer(e.target.value.manufacturer_id)}
+                                onChange={(e) => setManufacturer(e.target.value)}
                             >
                                 {manufacturersList?.map((item, index) => {
                                     return (<option key={index} value={item.manufacturer_id}>{item.name}</option>);
